@@ -2,13 +2,15 @@ import Fluent
 import Vapor
 
 func routes(_ app: Application) throws {
-    app.get { req in
-        return "It works!"
-    }
+    /*
+     GET http://localhost:8080/api/acronyms/: get all the acronyms.
+     • POST http://localhost:8080/api/acronyms: create a new acronym.
+     • GET http://localhost:8080/api/acronyms/1: get the acronym with ID 1.
+     • PUT http://localhost:8080/api/acronyms/1: update the acronym with ID 1.
+     • DELETE http://localhost:8080/api/acronyms/1: delete the acronym with ID 1.
+     */
 
-    app.get("hello") { req -> String in
-        return "Hello, world!"
-    }
-
-    try app.register(collection: TodoController())
+    try app.register(collection: AcronymsController())
+    try app.register(collection: UsersController())
+    try app.register(collection: CategoriesController())
 }
